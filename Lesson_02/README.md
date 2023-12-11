@@ -19,12 +19,12 @@ Optional/HomeWork: Add a function to ensure that the cube aspect ratio does not 
 three.js provides classes to allow an easy control of the camera pose, see for example the OrbitControls. Note that to use these controls you will have to include the file separately in your HTML (files in the /examples directory). You might also add the following script:
 
 ``` html
-<script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 ``` 
 In the previous example, replace the camera control with the following line and see what happens:
 
 ``` html
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 ``` 
 Do not forget to update the camera controls in the render function: 
 ``` html
