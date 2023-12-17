@@ -55,6 +55,13 @@ box.add(sphere_4);
 
 scene.add( box );
 
+var box_matrix = box.matrix
+console.log('Box Matrix:', box_matrix)
+
+var sphere_1_matrix = sphere_1.matrix
+
+console.log('Sphere_1 Matrix: ',sphere_1_matrix)
+
 
 const alight = new THREE.AmbientLight(0xffffff);
 scene.add(alight);
