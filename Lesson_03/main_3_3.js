@@ -28,8 +28,6 @@ scene.add( directionalLight );
 directionalLight.position.set( 1, 0, 0 );
 directionalLight.target.position.set( 0, 0, 0 );
 
-
-
 camera.position.z = 5;
 
 function animate() {
