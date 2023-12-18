@@ -19,6 +19,13 @@ const earth_geometry = new THREE.SphereGeometry( 1, 32, 32 );
 
 var texloader = new THREE.TextureLoader();
 var earth_tex = texloader.load("../images/earth_surface_2048.jpg");
+const earth_textures = [
+    "../images/earth_surface_2048.jpg",
+    "../images/earth_clouds_1024.png",
+    "../images/earth_normal_2048.jpg",
+    "../images/earth_specular_2048.jpg",
+    "../images/earth_atmos_2048.jpg",
+  ];
 var moon_tex = texloader.load("../images/moon_1024.jpg");
 
 const basic_material = new THREE.MeshBasicMaterial( { map: earth_tex } );
@@ -52,6 +59,7 @@ document.addEventListener("keydown", onDocumentKeyDown, false);
 
 var light_on = true
 var phong_mesh = true
+var current_texture_index = 0
 
 function onDocumentKeyDown(event){ 
     // Get the key code of the pressed key 
@@ -116,6 +124,22 @@ function onDocumentKeyDown(event){
         case 40:
             earth.rotation.z -= 0.01;
             console.log('Increased earth inclination to ' + earth.rotation.z.toFixed(2));
+            break;
+        case 67:
+            // Increment the texture index (loop back to the start if needed)
+            current_texture_index = (current_texture_index + 1) % earth_textures.length;
+            
+            const next_texture_path = earth_textures[current_texture_index];
+            const next_texture = texloader.load(next_texture_path);
+            console.log("Earth Texture: " + next_texture_path);
+            
+            // Update both materials map with the new texture
+            basic_material.map = next_texture;
+            phong_material.map = next_texture;
+
+            basic_material.needsUpdate = true;
+            phong_material.needsUpdate = true;
+        
             break;
     }
 }
