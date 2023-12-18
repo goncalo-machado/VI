@@ -20,15 +20,11 @@ const geometry = new THREE.BoxGeometry( 1, 1, 1);
 // const material = new THREE.MeshBasicMaterial( { map: tex } );
 // const cube = new THREE.Mesh( geometry, material );
 
-
-
-var materials = [];
-materials.push(new THREE.MeshBasicMaterial({ map: texloader.load('../images/Im1.jpg') }));
-materials.push(new THREE.MeshBasicMaterial({ map: texloader.load('../images/Im2.jpg') }));
-materials.push(new THREE.MeshBasicMaterial({ map: texloader.load('../images/Im3.jpg') }));
-materials.push(new THREE.MeshBasicMaterial({ map: texloader.load('../images/Im4.jpg') }));
-materials.push(new THREE.MeshBasicMaterial({ map: texloader.load('../images/Im5.jpg') }));
-materials.push(new THREE.MeshBasicMaterial({ map: texloader.load('../images/Im6.jpg') }));
+const materials = [];
+for (var i = 1; i <= 6; i++){
+    materials.push(new THREE.MeshBasicMaterial({ map: new
+                    THREE.TextureLoader().load('images/Im'+i+'.jpg') }));
+}
 const cube = new THREE.Mesh( geometry, materials );
 
 scene.add( cube );
